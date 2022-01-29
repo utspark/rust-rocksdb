@@ -302,6 +302,7 @@ fn cxx_standard() -> String {
 fn main() {
     bindgen_rocksdb();
 
+    println!("cargo:rustc-link-lib=dylib=atomic");
     if !try_to_find_and_link_lib("ROCKSDB") {
         println!("cargo:rerun-if-changed=rocksdb/");
         fail_on_empty_directory("rocksdb");
